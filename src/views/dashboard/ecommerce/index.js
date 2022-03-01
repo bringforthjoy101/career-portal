@@ -1,8 +1,10 @@
 // ** React Imports
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 
 // ** Reactstrap Imports
 import { Row, Col } from 'reactstrap'
+import { TrendingUp, User, Box } from 'react-feather'
+import { apiRequest, swal } from '@utils'
 
 // ** Context
 import { ThemeColors } from '@src/utility/context/ThemeColors'
@@ -25,59 +27,70 @@ import '@styles/react/libs/charts/apex-charts.scss'
 import '@styles/base/pages/dashboard-ecommerce.scss'
 
 const EcommerceDashboard = () => {
-  // ** Context
-  const { colors } = useContext(ThemeColors)
+	// ** Context
+	const { colors } = useContext(ThemeColors)
 
-  // ** vars
-  const trackBgColor = '#e9ecef'
+	// ** vars
+	const trackBgColor = '#e9ecef'
 
-  return (
-    <div id='dashboard-ecommerce'>
-      <Row className='match-height'>
-        <Col xl='4' md='6' xs='12'>
-          <CardMedal />
-        </Col>
-        <Col xl='8' md='6' xs='12'>
-          <StatsCard cols={{ xl: '3', sm: '6' }} />
-        </Col>
-      </Row>
-      <Row className='match-height'>
-        <Col lg='4' md='12'>
-          <Row className='match-height'>
-            <Col lg='6' md='3' xs='6'>
-              <OrdersBarChart warning={colors.warning.main} />
-            </Col>
-            <Col lg='6' md='3' xs='6'>
-              <ProfitLineChart info={colors.info.main} />
-            </Col>
-            <Col lg='12' md='6' xs='12'>
-              <Earnings success={colors.success.main} />
-            </Col>
-          </Row>
-        </Col>
-        <Col lg='8' md='12'>
-          <RevenueReport primary={colors.primary.main} warning={colors.warning.main} />
-        </Col>
-      </Row>
-      <Row className='match-height'>
-        <Col lg='8' xs='12'>
-          <CompanyTable />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <CardMeetup />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <CardBrowserStates colors={colors} trackBgColor={trackBgColor} />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <GoalOverview success={colors.success.main} />
-        </Col>
-        <Col lg='4' md='6' xs='12'>
-          <CardTransactions />
-        </Col>
-      </Row>
-    </div>
-  )
+	const [dashData, setDashData] = useState(null)
+	const [userData, setUserData] = useState(null)
+
+	// ** Get all Dashboard Data
+	const dashboardData = async () => {
+		const response = await apiRequest({ url: '/dashboard', method: 'GET' })
+		if (response) {
+			if (response?.data?.data && response?.data?.status) {
+				await setDashData(response.data.data)
+			} else {
+				console.log(response.error)
+			}
+		} else {
+			swal('Oops!', 'Somthing went wrong with your network.', 'error')
+		}
+	}
+	useEffect(() => {}, [])
+
+	// ** Get admin activities
+	useEffect(async () => {
+		await dashboardData()
+		setUserData(JSON.parse(localStorage.getItem('userData')))
+	}, [])
+	console.log(dashData)
+	const data = dashData?.map((data) => {
+		return { title: data.value, subtitle: data.name, color: 'light-primary', icon: <Box size={24} /> }
+	})
+
+	// const data = [
+	// 	{
+	// 		title: '230k',
+	// 		subtitle: 'Vacancies',
+	// 		color: 'light-primary',
+	// 		icon: <TrendingUp size={24} />,
+	// 	},
+	// 	{
+	// 		title: '8.549k',
+	// 		subtitle: 'Applications',
+	// 		color: 'light-info',
+	// 		icon: <User size={24} />,
+	// 	},
+	// 	{
+	// 		title: '1.423k',
+	// 		subtitle: 'Documents',
+	// 		color: 'light-primary',
+	// 		icon: <Box size={24} />,
+	// 	},
+	// ]
+
+	return (
+		<div id="dashboard-ecommerce">
+			<Row className="match-height">
+				<Col xl="12" md="12" xs="12">
+					<StatsCard data={data} cols={{ xl: '3', sm: '3' }} />
+				</Col>
+			</Row>
+		</div>
+	)
 }
 
 export default EcommerceDashboard

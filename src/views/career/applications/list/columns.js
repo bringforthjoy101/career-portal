@@ -40,10 +40,10 @@ export const columns = [
 			<div className="d-flex justify-content-left align-items-center">
 				{renderClient(row)}
 				<div className="d-flex flex-column">
-					<Link to={`/application/view/${row.candidate.id}`} className="user-name text-truncate mb-0">
-						<span className="font-weight-bold">{row.candidate.names}</span>
+					<Link to={`/application/view/${row?.candidate?.id}`} className="user-name text-truncate mb-0">
+						<span className="font-weight-bold">{row?.candidate?.names}</span>
 					</Link>
-					<small className="text-truncate text-muted mb-0">{row.candidate.email}</small>
+					<small className="text-truncate text-muted mb-0">{row?.candidate?.email}</small>
 				</div>
 			</div>
 		),
@@ -55,8 +55,8 @@ export const columns = [
 		sortable: true,
 		cell: (row) => (
 			<div className="d-flex flex-column">
-				<Link to={`/vacancy/view/${row.vacancy.id}`} className="user-name text-truncate mb-0">
-					<span className="font-weight-bold">{row.vacancy.name}</span>
+				<Link to={`/vacancy/view/${row?.vacancy?.id}`} className="user-name text-truncate mb-0">
+					<span className="font-weight-bold">{row?.vacancy?.name}</span>
 				</Link>
 				{/* <small className="text-truncate text-muted mb-0">{moment(row.vacancy.closedAt).format('LLL')}</small> */}
 			</div>

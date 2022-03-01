@@ -89,38 +89,22 @@ const Login = () => {
 					password: data.password,
 				})
 				.then((res) => {
-					if (res.data.message === 'Login successfull' && res.data.data.admin.status === 'active') {
+					if (res.data.status) {
 						const data = {
-							...res.data.data.admin,
+							...res.data.data.candidate,
 							accessToken: res.data.data.token,
 							ability: [{ action: 'manage', subject: 'all' }],
 						}
 						dispatch(handleLogin(data))
 						ability.update(data.ability)
-						history.push(getHomeRouteForLoggedInUser(data.role))
-						toast.success(<ToastContent name={data.names || 'John Doe'} role={data.role || 'admin'} />, {
-							icon: false,
-							transition: Slide,
-							hideProgressBar: true,
-							autoClose: 2000,
-						})
-					} else if (res.data.message === 'Login successfull' && res.data.data.admin.status === 'inactive') {
-						const data = {
-							...res.data.data.admin,
-							accessToken: res.data.data.token,
-							ability: [{ action: 'manage', subject: 'all' }],
-						}
-						dispatch(handleLogin(data))
-						ability.update(data.ability)
-						history.push('pages/account-settings')
-						toast.success(<ToastContent name={data.names || 'John Doe'} role={data.role || 'admin'} />, {
+						history.push(getHomeRouteForLoggedInUser('admin'))
+						toast.success(<ToastContent name={data.names || 'John Doe'} role={'Candidate'} />, {
 							icon: false,
 							transition: Slide,
 							hideProgressBar: true,
 							autoClose: 2000,
 						})
 					} else {
-						console.log('res')
 						toast.error(<ToastError message={`${res.data.message}` || 'Invalid Login'} />, {
 							icon: false,
 							transition: Slide,
@@ -202,6 +186,12 @@ const Login = () => {
 								Sign in
 							</Button>
 						</Form>
+						<p className="text-center mt-2">
+							<span className="me-25">New on our platform?</span>
+							<Link to="/register">
+								<span>Create an account</span>
+							</Link>
+						</p>
 					</Col>
 				</Col>
 			</Row>

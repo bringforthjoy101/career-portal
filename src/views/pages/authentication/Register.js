@@ -29,8 +29,9 @@ import '@styles/react/pages/page-authentication.scss'
 const defaultValues = {
 	email: '',
 	terms: false,
-	username: '',
+	names: '',
 	password: '',
+	phone: '',
 }
 
 const Register = () => {
@@ -53,11 +54,12 @@ const Register = () => {
 		const tempData = { ...data }
 		delete tempData.terms
 		if (Object.values(tempData).every((field) => field.length > 0) && data.terms === true) {
-			const { username, email, password } = data
+			const { names, phone, email, password } = data
 			useJwt
-				.register({ username, email, password })
+				.register({ names, phone, email, password })
 				.then((res) => {
-					if (res.data.error) {
+					console.log(res.data)
+					if (!res.data.status) {
 						for (const property in res.data.error) {
 							if (res.data.error[property] !== null) {
 								setError(property, {
@@ -67,16 +69,13 @@ const Register = () => {
 							}
 						}
 					} else {
-						const data = { ...res.data.user, accessToken: res.data.accessToken }
-						ability.update(res.data.user.ability)
-						dispatch(handleLogin(data))
-						history.push('/')
+						history.push('/login')
 					}
 				})
 				.catch((err) => console.log(err))
 		} else {
 			for (const key in data) {
-				if (data[key].length === 0) {
+				if (data[key]?.length === 0) {
 					setError(key, {
 						type: 'manual',
 						message: `Please enter a valid ${key}`,
@@ -159,33 +158,47 @@ const Register = () => {
 
 						<Form action="/" className="auth-register-form mt-2" onSubmit={handleSubmit(onSubmit)}>
 							<div className="mb-1">
-								<Label className="form-label" for="register-username">
-									Username
+								<Label className="form-label" for="login-email">
+									Full Name
 								</Label>
 								<Controller
-									id="username"
-									name="username"
+									id="names"
+									name="names"
 									control={control}
-									render={({ field }) => <Input autoFocus placeholder="johndoe" invalid={errors.username && true} {...field} />}
+									render={({ field }) => <Input autoFocus type="text" placeholder="john@example.com" invalid={errors.names && true} {...field} />}
 								/>
-								{errors.username ? <FormFeedback>{errors.username.message}</FormFeedback> : null}
 							</div>
 							<div className="mb-1">
-								<Label className="form-label" for="register-email">
+								<Label className="form-label" for="login-email">
+									Phone
+								</Label>
+								<Controller
+									id="phone"
+									name="phone"
+									control={control}
+									render={({ field }) => <Input autoFocus type="text" placeholder="Phone Number" invalid={errors.phone && true} {...field} />}
+								/>
+							</div>
+							<div className="mb-1">
+								<Label className="form-label" for="login-email">
 									Email
 								</Label>
 								<Controller
 									id="email"
 									name="email"
 									control={control}
-									render={({ field }) => <Input type="email" placeholder="john@example.com" invalid={errors.email && true} {...field} />}
+									render={({ field }) => <Input autoFocus type="email" placeholder="john@example.com" invalid={errors.email && true} {...field} />}
 								/>
-								{errors.email ? <FormFeedback>{errors.email.message}</FormFeedback> : null}
 							</div>
 							<div className="mb-1">
-								<Label className="form-label" for="register-password">
-									Password
-								</Label>
+								<div className="d-flex justify-content-between">
+									<Label className="form-label" for="login-password">
+										Password
+									</Label>
+									<Link to="/forgot-password">
+										<small>Forgot Password?</small>
+									</Link>
+								</div>
 								<Controller
 									id="password"
 									name="password"
@@ -193,6 +206,7 @@ const Register = () => {
 									render={({ field }) => <InputPasswordToggle className="input-group-merge" invalid={errors.password && true} {...field} />}
 								/>
 							</div>
+
 							<div className="form-check mb-1">
 								<Controller
 									name="terms"
@@ -216,23 +230,6 @@ const Register = () => {
 								<span>Sign in instead</span>
 							</Link>
 						</p>
-						<div className="divider my-2">
-							<div className="divider-text">or</div>
-						</div>
-						<div className="auth-footer-btn d-flex justify-content-center">
-							<Button color="facebook">
-								<Facebook size={14} />
-							</Button>
-							<Button color="twitter">
-								<Twitter size={14} />
-							</Button>
-							<Button color="google">
-								<Mail size={14} />
-							</Button>
-							<Button className="me-0" color="github">
-								<GitHub size={14} />
-							</Button>
-						</div>
 					</Col>
 				</Col>
 			</Row>

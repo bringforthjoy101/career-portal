@@ -78,7 +78,7 @@ export const UpdateStatus = () => {
 						</div>
 					</ModalBody>
 					<ModalFooter>
-						<Button className="mt-1" color="primary" disabled={isSubmitting}>
+						<Button className="me-1" color="primary" disabled={isSubmitting}>
 							{isSubmitting && <Spinner color="white" size="sm" />}
 							Submit
 						</Button>

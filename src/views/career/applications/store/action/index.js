@@ -31,7 +31,9 @@ export const getFilteredData = (applications, params) => {
 		/* eslint-disable  */
 		const queryLowered = q.toLowerCase()
 		const filteredData = applications.filter(
-			(application) => application.name.toLowerCase().includes(queryLowered) && application.status === (status || application.status)
+			(application) =>
+				(application?.candidate?.names?.toLowerCase().includes(queryLowered) || application?.vacancy?.name?.toLowerCase().includes(queryLowered)) &&
+				application.status === (status || application.status)
 		)
 		/* eslint-enable  */
 

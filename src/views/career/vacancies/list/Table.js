@@ -26,6 +26,8 @@ import '@styles/react/libs/tables/react-dataTable-component.scss'
 
 // ** Table Header
 const CustomHeader = ({ handleModal }) => {
+	const userData = JSON.parse(localStorage.getItem('userData'))
+
 	return (
 		<div className="invoice-list-table-header w-100 me-1 ms-50 mt-2 mb-75">
 			<Row>
@@ -52,10 +54,14 @@ const CustomHeader = ({ handleModal }) => {
 					xl="12"
 					className="d-flex align-items-sm-center justify-content-xl-end justify-content-end align-items-center flex-xl-nowrap flex-wrap flex-sm-row flex-column pe-xl-1 p-0 mt-xl-0"
 				>
-					<Button className="ms-2" color="primary" onClick={handleModal}>
-						<Plus size={15} />
-						<span className="align-middle ms-50">Create Vacancy</span>
-					</Button>
+					{userData.type === 'admin' ? (
+						<Button className="ms-2" color="primary" onClick={handleModal}>
+							<Plus size={15} />
+							<span className="align-middle ms-50">Create Vacancy</span>
+						</Button>
+					) : (
+						''
+					)}
 				</Col>
 			</Row>
 		</div>

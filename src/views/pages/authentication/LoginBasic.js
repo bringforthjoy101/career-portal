@@ -97,7 +97,8 @@ const LoginBasic = () => {
 						}
 						dispatch(handleLogin(data))
 						ability.update(data.ability)
-						window.location.href(getHomeRouteForLoggedInUser('admin'))
+						console.log(typeof getHomeRouteForLoggedInUser('admin'), getHomeRouteForLoggedInUser('admin'))
+						window.location.href = getHomeRouteForLoggedInUser('admin')
 						// history.push(getHomeRouteForLoggedInUser('admin'))
 						toast.success(<ToastContent name={data.names || 'John Doe'} role={'Administrator'} />, {
 							icon: false,

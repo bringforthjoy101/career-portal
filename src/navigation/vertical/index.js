@@ -7,17 +7,15 @@
 // import charts from './charts'
 import dashboards from './dashboards'
 // import uiElements from './ui-elements'
-import career from "./career"
+import admins from './admins'
+import applications from './applications'
+import candidates from './candidates'
+import documents from './documents'
+import vacancies from './vacancies'
+
+const userData = JSON.parse(localStorage.getItem('userData'))
 
 // ** Merge & Export
-export default [
-    ...dashboards, 
-    ...career
-    // ...apps, 
-    // ...pages,
-    // ...uiElements,
-    // ...forms
-    // ...tables
-    // ...charts, 
-    // ...others
-]
+export default userData?.type === 'admin'
+	? [...dashboards, ...admins, ...applications, ...candidates, ...documents, ...vacancies]
+	: [...dashboards, ...vacancies, ...applications, ...documents]

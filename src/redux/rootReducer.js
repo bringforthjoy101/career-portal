@@ -15,6 +15,7 @@ import admins from '@src/views/career/admins/store/reducer'
 import vacancies from '@src/views/career/vacancies/store/reducer'
 import applications from '@src/views/career/applications/store/reducer'
 import candidates from '@src/views/career/candidates/store/reducer'
+import documents from '@src/views/career/documents/store/reducer'
 
 const rootReducer = {
 	auth,
@@ -22,6 +23,7 @@ const rootReducer = {
 	vacancies,
 	applications,
 	candidates,
+	documents,
 	todo,
 	chat,
 	email,

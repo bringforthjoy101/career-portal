@@ -40,19 +40,19 @@ const AdminView = () => {
 		}
 	}, [])
 
-	return store.selectedAdmin !== null && store.selectedAdmin !== undefined ? (
+	return store.selectedVacancy !== null && store.selectedVacancy !== undefined ? (
 		<div className="app-user-view">
 			<Row>
-				{userData?.role === 'control' ? (
-					<Col xl="3" lg="4" md="5">
-						<PlanCard selectedAdmin={store.selectedAdmin} />
-					</Col>
-				) : (
-					''
-				)}
 				<Col xl="9" lg="8" md="7">
-					<AdminInfoCard selectedAdmin={store.selectedAdmin} />
+					<AdminInfoCard selectedVacancy={store.selectedVacancy} />
 				</Col>
+				{/* {userData?.type === 'admin' ? ( */}
+				<Col xl="3" lg="4" md="5">
+					<PlanCard selectedVacancy={store.selectedVacancy} />
+				</Col>
+				{/* // ) : (
+				// 	''
+				// )} */}
 			</Row>
 		</div>
 	) : (

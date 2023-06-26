@@ -12,7 +12,7 @@ import { Row, Col, CardTitle, CardText, Form, Label, Input, Button } from 'react
 
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
-import Voki from '../../../assets/images/logo/voki.png'
+import Venite from '../../../assets/images/logo/venite-logo-colored.png'
 
 const ForgotPasswordCover = () => {
 	// ** Hooks
@@ -25,7 +25,7 @@ const ForgotPasswordCover = () => {
 		<div className="auth-wrapper auth-cover">
 			<Row className="auth-inner m-0">
 				<Link className="brand-logo" to="/" onClick={(e) => e.preventDefault()}>
-					<img src={Voki} style={{ width: '100px' }} alt="logo" />
+					<img src={Venite} style={{ width: '100px' }} alt="logo" />
 				</Link>
 				<Col className="d-none d-lg-flex align-items-center p-5" lg="8" sm="12">
 					<div className="w-100 d-lg-flex align-items-center justify-content-center px-5">

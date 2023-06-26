@@ -49,7 +49,7 @@ const AdminInfoCard = ({ selectedCandidate }) => {
 									{renderUserImg()}
 									<div className="d-flex flex-column align-items-center text-center">
 										<div className="user-info">
-											<h4 className="mb-1 mt-1">{selectedCandidate.names || 'VOKI Academy Admin'}</h4>
+											<h4 className="mb-1 mt-1">{selectedCandidate.names || 'Venite University Admin'}</h4>
 											<p>
 												{selectedCandidate.phone} | {selectedCandidate.email}
 											</p>

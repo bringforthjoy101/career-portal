@@ -52,7 +52,7 @@ const PreviewCard = ({ data }) => {
 									</g>
 								</g>
 							</svg>
-							<h3 className="text-primary invoice-logo">VOKI Academy</h3>
+							<h3 className="text-primary invoice-logo">Venite University</h3>
 						</div>
 						<CardText className="mb-25">Office 149, 450 South Brand Brooklyn</CardText>
 						<CardText className="mb-25">San Diego County, CA 91905, USA</CardText>

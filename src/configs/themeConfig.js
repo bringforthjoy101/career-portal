@@ -3,8 +3,8 @@
 //Template config options
 const themeConfig = {
 	app: {
-		appName: 'VOKI Academy',
-		appLogoImage: require('@src/assets/images/logo/voki.png').default,
+		appName: 'Venite University',
+		appLogoImage: require('@src/assets/images/logo/venite-logo-colored.png').default,
 	},
 	layout: {
 		isRTL: false,

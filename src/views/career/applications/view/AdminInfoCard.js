@@ -50,7 +50,7 @@ const AdminInfoCard = ({ selectedApplication }) => {
 									{renderUserImg()}
 									<div className="d-flex flex-column align-items-center text-center">
 										<div className="user-info">
-											<h4 className="mb-1 mt-1">{selectedApplication.candidate.names || 'VOKI Academy Admin'}</h4>
+											<h4 className="mb-1 mt-1">{selectedApplication.candidate.names || 'Venite University Admin'}</h4>
 											<p>
 												{selectedApplication.candidate.phone} | {selectedApplication.candidate.email}
 											</p>

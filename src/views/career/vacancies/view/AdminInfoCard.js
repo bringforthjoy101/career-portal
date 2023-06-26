@@ -61,7 +61,7 @@ const AdminInfoCard = ({ selectedVacancy }) => {
 									{renderUserImg()}
 									<div className="d-flex flex-column align-items-center text-center">
 										<div className="user-info">
-											<h4 className="mt-1">{selectedVacancy !== null ? selectedVacancy.name : 'VOKI Academy Vacancy'}</h4>
+											<h4 className="mt-1">{selectedVacancy !== null ? selectedVacancy.name : 'Venite University Vacancy'}</h4>
 											<Badge color={statusColors[selectedVacancy.status]} className="text-capitalize">
 												{selectedVacancy.status}
 											</Badge>

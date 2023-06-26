@@ -20,7 +20,7 @@ import { AbilityContext } from '@src/utility/context/Can'
 // ** Custom Components
 import Avatar from '@components/avatar'
 import InputPasswordToggle from '@components/input-password-toggle'
-import Voki from '../../../assets/images/logo/voki.png'
+import Venite from '../../../assets/images/logo/venite-logo-colored.png'
 
 // ** Utils
 import { getHomeRouteForLoggedInUser } from '@utils'
@@ -40,7 +40,7 @@ const ToastContent = ({ name, role }) => (
 			</div>
 		</div>
 		<div className="toastify-body">
-			<span>You have successfully logged in as an {role} user to VOKI Academy. Now you can start to explore. Enjoy!</span>
+			<span>You have successfully logged in as an {role} user to Venite University. Now you can start to explore. Enjoy!</span>
 		</div>
 	</Fragment>
 )
@@ -132,7 +132,7 @@ const Login = () => {
 		<div className="auth-wrapper auth-cover">
 			<Row className="auth-inner m-0">
 				<Link className="brand-logo" to="/" onClick={(e) => e.preventDefault()}>
-					<img src={Voki} style={{ width: '100px' }} alt="logo" />
+					<img src={Venite} style={{ width: '100px' }} alt="logo" />
 				</Link>
 				<Col className="d-none d-lg-flex align-items-center p-5" lg="8" sm="12">
 					<div className="w-100 d-lg-flex align-items-center justify-content-center px-5">
@@ -142,7 +142,7 @@ const Login = () => {
 				<Col className="d-flex align-items-center auth-bg px-2 p-lg-5" lg="4" sm="12">
 					<Col className="px-xl-2 mx-auto" sm="8" md="6" lg="12">
 						<CardTitle tag="h2" className="fw-bold mb-1">
-							Welcome to VOKI Academy! 👋
+							Welcome to Venite University! 👋
 						</CardTitle>
 						<CardText className="mb-2">Please sign-in to your account and start the adventure</CardText>
 						<Form className="auth-login-form mt-2" onSubmit={handleSubmit(onSubmit)}>

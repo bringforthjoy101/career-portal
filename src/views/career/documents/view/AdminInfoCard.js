@@ -61,7 +61,7 @@ const AdminInfoCard = ({ selectedAdmin }) => {
 									{renderUserImg()}
 									<div className="d-flex flex-column align-items-center text-center">
 										<div className="user-info">
-											<h4 className="mb-0">{selectedAdmin !== null ? selectedAdmin.names : 'VOKI Academy Admin'}</h4>
+											<h4 className="mb-0">{selectedAdmin !== null ? selectedAdmin.names : 'Venite University Admin'}</h4>
 											{selectedAdmin !== null ? (
 												<Badge color={roleColors[selectedAdmin.role]} className="text-capitalize">
 													{selectedAdmin.role}

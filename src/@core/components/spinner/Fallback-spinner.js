@@ -1,6 +1,6 @@
 // ** Logo
 // import logo from '@src/assets/images/logo/logo.png'
-import logo from '@src/assets/images/logo/voki.png'
+import logo from '@src/assets/images/logo/venite-logo-colored.png'
 
 const SpinnerComponent = () => {
 	return (

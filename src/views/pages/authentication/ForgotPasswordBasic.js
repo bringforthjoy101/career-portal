@@ -6,7 +6,7 @@ import { ChevronLeft } from 'react-feather'
 
 // ** Reactstrap Imports
 import { Card, CardBody, CardTitle, CardText, Form, Label, Input, Button } from 'reactstrap'
-import Voki from '../../../assets/images/logo/voki.png'
+import Venite from '../../../assets/images/logo/venite-logo-colored.png'
 
 // ** Styles
 import '@styles/react/pages/page-authentication.scss'
@@ -17,7 +17,7 @@ const ForgotPasswordBasic = () => {
 				<Card className="mb-0">
 					<CardBody>
 						<Link className="brand-logo" to="/" onClick={(e) => e.preventDefault()}>
-							<img src={Voki} style={{ width: '100px' }} alt="logo" />
+							<img src={Venite} style={{ width: '100px' }} alt="logo" />
 						</Link>
 						<CardTitle tag="h4" className="mb-1">
 							Forgot Password? 🔒

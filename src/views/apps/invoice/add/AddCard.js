@@ -12,7 +12,7 @@ import { SlideDown } from 'react-slidedown'
 import { X, Plus, Hash } from 'react-feather'
 import Select, { components } from 'react-select'
 
-import Voki from '../../../../assets/images/logo/voki.png'
+import Venite from '../../../../assets/images/logo/venite-logo-colored.png'
 // ** Reactstrap Imports
 import { selectThemeColors } from '@utils'
 import { Row, Col, Card, Form, Input, Label, Button, CardBody, CardText, InputGroup, InputGroupText } from 'reactstrap'
@@ -123,7 +123,7 @@ const AddCard = () => {
 					<div className="d-flex justify-content-between flex-md-row flex-column invoice-spacing mt-0">
 						<div>
 							<div className="logo-wrapper">
-								<img style={{ width: '100px' }} src={Voki} alt="logo" />
+								<img style={{ width: '100px' }} src={Venite} alt="logo" />
 							</div>
 							<p className="card-text mb-25">Office 149, 450 South Brand Brooklyn</p>
 							<p className="card-text mb-25">San Diego County, CA 91905, USA</p>
